@@ -1,0 +1,25 @@
+name: "Deploy to GH Pages"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: Checkout
+        run: actions/checkout@v3
+
+      - name: Setup node
+        run: actions/setup-node@v3
+        with:
+          cache: npm
+
+      - name: Install
+        run: npm install
+
+      - name: Run deploy script
+        run: ./deploy.sh

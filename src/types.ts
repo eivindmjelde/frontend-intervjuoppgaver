@@ -1,5 +1,5 @@
 export type Task = {
   id: string;
-  title: string;
+  title: string | JSX.Element;
   completed?: boolean;
 };
